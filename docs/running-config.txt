@@ -1,0 +1,177 @@
+Current configuration : 3857 bytes
+!
+! Last configuration change at 01:18:36 UTC Sat Oct 31 2026
+!
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+logging buffered 32768 informational
+!
+aaa new-model
+!
+!
+aaa group server radius RADIUS-GROUP
+ server name NPS-SERVER
+!
+aaa authentication login default local group RADIUS-GROUP
+aaa authorization exec default local group RADIUS-GROUP
+aaa accounting delay-start
+aaa accounting exec default start-stop group RADIUS-GROUP
+!
+!
+!
+!
+!
+aaa session-id common
+ethernet lmi ce
+!
+!
+!
+no process cpu autoprofile hog
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+no ip domain lookup
+ip domain name red.local
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+username admin privilege 15 secret 5 $1$AMDc$q5h5bTIvpnnSDBHO1.Uet0
+!
+redundancy
+!
+no cdp log mismatch duplex
+no cdp run
+!
+ip tcp synwait-time 5
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ description Conexion hacia la Red y Servidor NPS
+ ip address 10.7.91.201 255.255.255.128
+ duplex auto
+ speed auto
+ media-type rj45
+ no cdp enable
+!
+interface GigabitEthernet0/1
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+ no cdp enable
+!
+interface GigabitEthernet0/2
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+ no cdp enable
+!
+interface GigabitEthernet0/3
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+ no cdp enable
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip ssh version 2
+!
+!
+!
+!
+!
+radius server NPS-SERVER
+ address ipv4 10.7.91.200 auth-port 1812 acct-port 1813
+ key TuClaveSecretaRadius
+!
+!
+control-plane
+!
+banner exec ^C
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************^C
+banner incoming ^C
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************^C
+banner login ^C
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************^C
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ transport input ssh
+!
+no scheduler allocate
+!
+end
