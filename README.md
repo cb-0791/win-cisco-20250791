@@ -1,4 +1,4 @@
-
+https://youtu.be/xSFPvkNJTXY
 Documentación del Laboratorio de Redes Seguras: AAA, RADIUS y Active Directory
 1. Propósito del Laboratorio
 Implementar y documentar una topología de red segura integrada con un Router Cisco, un Ethernet Switch, y un Windows Server (Active Directory y NPS). El objetivo es aplicar autenticación centralizada RADIUS, protocolos AAA, cifrado SSH y control de acceso basado en roles para cumplir con rigurosos estándares de seguridad perimetral y auditoría de red.
@@ -137,12 +137,8 @@ Prueba de Conectividad Inicial: Desde el Windows Server, ejecutar un ping 10.7.9
 
 Acceso Seguro por SSH: Conectarse al router mediante SSH utilizando las credenciales del usuario de Active Directory (juanSU) y verificar la correcta redirección de la autenticación hacia el servidor NPS.
 
+<img width="955" height="608" alt="imagen_2026-10-30_224908884" src="https://github.com/user-attachments/assets/1310d34f-52d1-4c74-bd14-172796bdd261" />
 
-
-Validación de Logs: Comprobar los registros de auditoría y eventos en el Visor de Sucesos del servidor NPS y los búferes de logs del router Cisco.
-
-[!NOTE]
-Colocar aquí la captura de pantalla de la terminal mostrando el inicio de sesión SSH exitoso autenticado mediante RADIUS/Active Directory.
 
 📂 Archivos del Repositorio
 /configs/running-config.txt: Backup completo de la configuración del Router Cisco.
@@ -150,4 +146,4 @@ Colocar aquí la captura de pantalla de la terminal mostrando el inicio de sesi�
 /docs/: Carpeta contenedora de las capturas de evidencia fotográfica del laboratorio.
 
 🎥 Demostración en Video
-El video con la explicación detallada, validación de fecha/hora, exposición de la topología y demostración en vivo del acceso SSH se encuentra disponible en YouTube a través del enlace incrustado al inicio de este documento.
+https://youtu.be/xSFPvkNJTXY
